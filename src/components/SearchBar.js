@@ -6,8 +6,8 @@ const StyledSearchBar = styled.div`
     display: grid;
     height: 120px;
     justify-content: center;
-    margin: 24px auto 48px auto;
-    width: 100vw;
+    margin: 24px 16px 48px 0;
+    width: 100%;
     grid-column-start: 1;
     grid-column-end: 3;
 
@@ -34,6 +34,17 @@ const StyledSearchBar = styled.div`
         padding: 8px;
         width: 100%;
         z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 24px;
+    }
+
+    @media (max-width: 500px) {
+        .search-form{
+            width: 90vw;
+        }
+        
     }
 `
 

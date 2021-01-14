@@ -8,12 +8,16 @@ import './app.css';
 
 const StyledApp = styled.div`
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 7fr 3fr;
     grid-template-rows: 192px;
 
 
     @media(max-width: 1200px) {
         grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-rows: 180px;
     }
 `
 

@@ -4,10 +4,18 @@ import styled from 'styled-components';
 
 const StyledVideoList = styled.div`
     display: grid;
-    margin-top: 16px;
+    margin: 24px auto;
+    margin-right: 36px;
+    
 
     @media (max-width: 1200px) {
-        justify-content: center;
+        margin: 16px auto;
+        margin-top: 0;
+        width: 70vw;
+    }
+
+    @media (max-width: 500px) {
+        width: 90vw;
     }
 `
 
