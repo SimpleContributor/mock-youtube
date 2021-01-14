@@ -1,5 +1,15 @@
 import React from 'react';
 import VideoItem from './VideoItem';
+import styled from 'styled-components';
+
+const StyledVideoList = styled.div`
+    display: grid;
+    margin-top: 16px;
+
+    @media (max-width: 1200px) {
+        justify-content: center;
+    }
+`
 
 const VideoList = ({ videos, onVideoSelect }) => {
     const renderedList = videos.map((video) => {
@@ -7,7 +17,7 @@ const VideoList = ({ videos, onVideoSelect }) => {
     })
 
     return (
-        <div>{renderedList}</div>
+        <StyledVideoList>{renderedList}</StyledVideoList>
     )
 }
 
