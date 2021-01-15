@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/mock-youtube/static/css/main.399529ee.chunk.css",
+    "main.js": "/mock-youtube/static/js/main.00abe3b8.chunk.js",
+    "main.js.map": "/mock-youtube/static/js/main.00abe3b8.chunk.js.map",
+    "runtime-main.js": "/mock-youtube/static/js/runtime-main.1955f51c.js",
+    "runtime-main.js.map": "/mock-youtube/static/js/runtime-main.1955f51c.js.map",
+    "static/js/2.d3849435.chunk.js": "/mock-youtube/static/js/2.d3849435.chunk.js",
+    "static/js/2.d3849435.chunk.js.map": "/mock-youtube/static/js/2.d3849435.chunk.js.map",
+    "index.html": "/mock-youtube/index.html",
+    "static/css/main.399529ee.chunk.css.map": "/mock-youtube/static/css/main.399529ee.chunk.css.map",
+    "static/js/2.d3849435.chunk.js.LICENSE.txt": "/mock-youtube/static/js/2.d3849435.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1955f51c.js",
+    "static/js/2.d3849435.chunk.js",
+    "static/css/main.399529ee.chunk.css",
+    "static/js/main.00abe3b8.chunk.js"
+  ]
+}
