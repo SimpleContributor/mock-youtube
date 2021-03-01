@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledVideoItem = styled.div`
     color: white;
+    cursor: pointer;
     display: flex;
     justify-content: flex-start;
     margin: 0 12px;

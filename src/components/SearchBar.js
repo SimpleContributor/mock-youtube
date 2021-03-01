@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledSearchBar = styled.div`
@@ -28,6 +28,7 @@ const StyledSearchBar = styled.div`
     .search-input {
         border: 2px solid black;
         border-radius: 8px;
+        cursor: pointer;
         font-size: 24px;
         height: 40px;
         margin: 0;
@@ -48,36 +49,65 @@ const StyledSearchBar = styled.div`
     }
 `
 
-class SearchBar extends Component {
-    state = {term: ''};
+const SearchBar = ({ onTermSubmit }) => {
+    const [term, setTerm] = useState('');
 
-    onInputChange = event => {
-        this.setState({ term: event.target.value });
+    const onFormSubmit = e => {
+        e.preventDefault();
+
+        onTermSubmit(term);
     }
 
-    onFormSubmit = event => {
-        event.preventDefault();
+    // const [debouncedTerm, setDebouncedTerm] = useState(term);
 
-        this.props.onTermSubmit(this.state.term);
-    }
+    // useEffect(() => {
+    //     const timerId = setTimeout(() => {
+    //         setDebouncedTerm(term);
+    //     }, 500);
 
-    render() {
+    //     return () => {
+    //         clearTimeout(timerId);
+    //     }
+    // }, [term])
+
+    // state = {term: ''};
+
+    // onInputChange = event => {
+    //     this.setState({ term: event.target.value });
+    // }
+
+
+    // render() {
         return (
             <StyledSearchBar>
-                <form className="search-form" onSubmit = {this.onFormSubmit}>
+                <form className="search-form" onSubmit = {onFormSubmit}>
                     <div className="search-input-contianer">
                         <input
                             className="search-input"
                             type = "text"
-                            value = {this.state.term}
-                            onChange = {this.onInputChange}
+                            value = {term}
+                            onChange = {(e) => setTerm(e.target.value)}
                         >
                         </input>
                     </div>
                 </form>
             </StyledSearchBar>
         );
-    }
+    // }
 }
 
 export default SearchBar;
+
+
+
+                // <form className="search-form" onSubmit = {this.onFormSubmit}>
+                //     <div className="search-input-contianer">
+                //         <input
+                //             className="search-input"
+                //             type = "text"
+                //             value = {this.state.term}
+                //             onChange = {this.onInputChange}
+                //         >
+                //         </input>
+                //     </div>
+                // </form>

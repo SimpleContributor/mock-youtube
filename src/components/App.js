@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import VideoDetail from './VideoDetail';
 import VideoList from './VideoList';
@@ -21,39 +21,62 @@ const StyledApp = styled.div`
     }
 `
 
-class App extends Component {
-    state = { videos: [], selectedVideo: null };
+const App = () => {
+    const [videos, setVideos] = useState([]);
+    const [selectedVideo, setSelectedVideo] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('Buildings');
 
-    componentDidMount() {
-        this.onTermSubmit('buildings');
-    }
+    useEffect(() => {
+        const onTermSubmit = async term => {
+            const response = await youtube.get('/search', {
+                params: {
+                    q: term
+                }
 
-    onTermSubmit = async term => {
-        const response = await youtube.get('/search', {
-            params: {
-                q: term
-            }
-        })
+            })
+            setVideos(response.data.items);
+            setSelectedVideo(response.data.items[0]);
+        }
 
-        this.setState({ 
-            videos: response.data.items, 
-            selectedVideo: response.data.items[0] 
-        })
-    }
+        onTermSubmit(searchTerm);
+    }, [searchTerm])
 
-    onVideoSelect = video => {
-        this.setState({ selectedVideo: video })
-    }
+    // state = { videos: [], selectedVideo: null };
 
-    render() {
+    // componentDidMount() {
+    //     this.onTermSubmit('buildings');
+    // }
+
+    // onTermSubmit = async term => {
+    //     const response = await youtube.get('/search', {
+    //         params: {
+    //             q: term
+    //         }
+    //     })
+
+    //     this.setState({ 
+    //         videos: response.data.items, 
+    //         selectedVideo: response.data.items[0] 
+    //     })
+    // }
+
+    // onVideoSelect = video => {
+    //     this.setState({ selectedVideo: video })
+    // }
+
+    // <SearchBar onTermSubmit={this.onTermSubmit}/>
+    // <VideoDetail video={this.state.selectedVideo} />
+    // <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
+
+    // render() {
         return (
             <StyledApp>
-                <SearchBar onTermSubmit={this.onTermSubmit}/>
-                <VideoDetail video={this.state.selectedVideo} />
-                <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
+                <SearchBar onTermSubmit={setSearchTerm}/>
+                <VideoDetail video={selectedVideo} />
+                <VideoList onVideoSelect={setSelectedVideo} videos={videos} />
             </StyledApp>
         )
-    }
+    // }
 }
 
 export default App;
